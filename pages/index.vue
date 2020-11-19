@@ -1,16 +1,27 @@
 <template>
-  <div class="container">
-    <div>
+  <section class="container">
+    <header>
       <Logo />
       <h1 class="title">
-        Svelte-Guides
+        Svelte Guides
       </h1>
-    </div>
-  </div>
+    </header>
+  </section>
 </template>
 
 <script>
-export default {}
+import gsap from 'gsap'
+export default {
+  mounted () {
+    gsap.to('.title', {
+      delay: 0.5,
+      duration: 1,
+      y: -200,
+      backgroundColor: '#33333390',
+      opacity: 1
+    })
+  }
+}
 </script>
 
 <style>
@@ -37,8 +48,10 @@ export default {}
   display: block;
   font-weight: 300;
   font-size: 100px;
-  color: #35495e;
+  color: #d2e8ff;
   letter-spacing: 1px;
+  /* background-color: #33333300; */
+  opacity: 0;
 }
 
 .subtitle {

@@ -2,14 +2,17 @@
   <div class="app">
     <NavBar :items="items" />
     <Nuxt />
+    <Footer />
   </div>
 </template>
 
 <script>
 import NavBar from '~/components/NavBar'
+import Footer from '~/components/Footer'
 export default {
   components: {
-    NavBar
+    NavBar,
+    Footer
   },
   data () {
     return {
