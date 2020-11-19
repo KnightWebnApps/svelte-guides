@@ -44,6 +44,22 @@ export default {
       prevIcon: 'chevron-left',
       nextIcon: 'chevron-right'
     }
+  },
+  head () {
+    const title = 'Svelte Guides | Posts'
+    const desc = 'Find posts related to svelte content, learn how to intregrate third party services with svelte, sapper, routify, and soon svelte-kit.'
+    return {
+      title,
+      meta: [
+        { hid: 'description', name: 'description', content: desc },
+        // Open Graph
+        { hid: 'og:title', property: 'og:title', content: title },
+        { hid: 'og:description', property: 'og:description', content: desc },
+        // Twitter Card
+        { hid: 'twitter:title', name: 'twitter:title', content: title },
+        { hid: 'twitter:description', name: 'twitter:description', content: desc }
+      ]
+    }
   }
 }
 </script>

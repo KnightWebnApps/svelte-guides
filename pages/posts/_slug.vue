@@ -20,7 +20,17 @@ export default {
   head () {
     const post = this.post
     return {
-      title: 'Svelte Guides | Posts | ' + post.title
+      title: 'Svelte Guides | Posts | ' + post.title,
+      meta: [
+        { hid: 'description', name: 'description', content: post.description },
+        // Open Graph
+        { hid: 'og:title', property: 'og:title', content: post.title },
+        { hid: 'og:description', property: 'og:description', content: post.description },
+        { hid: 'og:type', property: 'og:type', content: 'blog' },
+        // Twitter Card
+        { hid: 'twitter:title', name: 'twitter:title', content: post.title },
+        { hid: 'twitter:description', name: 'twitter:description', content: post.description }
+      ]
     }
   }
 }
