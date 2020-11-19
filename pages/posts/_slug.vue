@@ -26,7 +26,8 @@ export default {
         // Open Graph
         { hid: 'og:title', property: 'og:title', content: post.title },
         { hid: 'og:description', property: 'og:description', content: post.description },
-        { hid: 'og:type', property: 'og:type', content: 'blog' },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        { hid: 'og:type', property: 'article:published_time', content: post.createdAt },
         // Twitter Card
         { hid: 'twitter:title', name: 'twitter:title', content: post.title },
         { hid: 'twitter:description', name: 'twitter:description', content: post.description }
