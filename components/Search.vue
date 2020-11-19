@@ -38,6 +38,7 @@ export default {
 
       this.articles = await this.$content('posts')
         .only(['title', 'slug'])
+        .where({ isPublished: true })
         .sortBy('createdAt', 'asc')
         .limit(12)
         .search(query)

@@ -3,7 +3,7 @@
     <div>
       <Logo />
       <h1 class="title">
-        svelte-guides-v1
+        Svelte-Guides
       </h1>
     </div>
   </div>
