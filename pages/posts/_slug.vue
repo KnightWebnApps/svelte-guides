@@ -1,20 +1,38 @@
 <template>
   <article class="content">
     <h1>{{ post.title }}</h1>
-    <ShareButton />
+    <FloatingShareButton
+      :title="post.title"
+      :text="post.description"
+      :url="url"
+    />
     <nuxt-content :document="post" />
+    <hr>
+    <p>Thank you for reading!!</p>
+    <ShareButton
+      :title="post.title"
+      :text="post.description"
+      :url="url"
+    />
   </article>
 </template>
 
 <script>
+import FloatingShareButton from '~/components/FloatingShareButton'
 import ShareButton from '~/components/ShareButton'
 export default {
   components: {
-    ShareButton
+    ShareButton,
+    FloatingShareButton
   },
   async asyncData ({ $content, params }) {
     return {
       post: await $content('posts/' + params.slug).fetch()
+    }
+  },
+  data () {
+    return {
+      url: this.$nuxt.$route.fullPath
     }
   },
   head () {
@@ -42,6 +60,7 @@ export default {
   padding: 0 1em;
   max-width: 900px;
   margin: 0 auto;
+  min-height: 90vh;
 }
 
 .content h1 {
@@ -65,5 +84,9 @@ export default {
 
 .nuxt-content ul{
   list-style: square;
+}
+
+hr {
+  margin: 15px 0;
 }
 </style>
