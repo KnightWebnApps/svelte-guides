@@ -8,22 +8,25 @@
     />
     <nuxt-content :document="post" />
     <hr>
-    <p>Thank you for reading!!</p>
-    <ShareButton
-      :title="post.title"
-      :text="post.description"
+    <ShareNetwork
+      class="share"
+      network="facebook"
       :url="url"
-    />
+      :title="post.title"
+      :description="post.description"
+    >
+      Share
+    </ShareNetwork>
   </article>
 </template>
 
 <script>
+import { ShareNetwork } from 'vue-social-sharing'
 import FloatingShareButton from '~/components/FloatingShareButton'
-import ShareButton from '~/components/ShareButton'
 export default {
   components: {
-    ShareButton,
-    FloatingShareButton
+    FloatingShareButton,
+    ShareNetwork
   },
   async asyncData ({ $content, params }) {
     return {
@@ -32,7 +35,7 @@ export default {
   },
   data () {
     return {
-      url: this.$nuxt.$route.fullPath
+      url: process.env.baseUrl + this.$nuxt.$route.fullPath
     }
   },
   head () {
@@ -88,5 +91,12 @@ export default {
 
 hr {
   margin: 15px 0;
+}
+
+.content .share {
+  background-color: var(--primary);
+  padding: 10px 15px;
+  margin: 15px;
+  cursor: pointer;
 }
 </style>
