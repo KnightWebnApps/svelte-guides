@@ -1,7 +1,9 @@
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
-
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'Svelte Guides',
@@ -47,7 +49,8 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content'
+    '@nuxt/content',
+    'vue-social-sharing/nuxt'
   ],
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)

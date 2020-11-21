@@ -42,7 +42,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 button {
   border: none;
   background-color: var(--primary);

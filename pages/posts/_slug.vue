@@ -3,18 +3,34 @@
     <h1>{{ post.title }}</h1>
     <ShareButton />
     <nuxt-content :document="post" />
+    <ShareNetwork
+      class="share"
+      network="facebook"
+      :url="url"
+      :title="post.title"
+      :description="post.description"
+    >
+      Share
+    </ShareNetwork>
   </article>
 </template>
 
 <script>
+import { ShareNetwork } from 'vue-social-sharing'
 import ShareButton from '~/components/ShareButton'
 export default {
   components: {
-    ShareButton
+    ShareButton,
+    ShareNetwork
   },
   async asyncData ({ $content, params }) {
     return {
       post: await $content('posts/' + params.slug).fetch()
+    }
+  },
+  data () {
+    return {
+      url: process.env.baseUrl + this.$nuxt.$route.fullPath
     }
   },
   head () {
@@ -65,5 +81,12 @@ export default {
 
 .nuxt-content ul{
   list-style: square;
+}
+
+.content .share {
+  background-color: var(--primary);
+  padding: 10px 15px;
+  margin: 15px;
+  cursor: pointer;
 }
 </style>
